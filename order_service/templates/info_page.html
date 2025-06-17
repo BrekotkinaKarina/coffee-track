@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold text-center mb-6">Заказ #{{ order_id }}</h1>
+        
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-2">Детали заказа</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <p class="text-gray-600">Клиент:</p>
+                    <p class="font-medium">{{ customer_name }}</p>
+                </div>
+                <div>
+                    <p class="text-gray-600">Кофе:</p>
+                    <p class="font-medium">{{ coffee_type }} ({{ coffee_size }})</p>
+                </div>
+                <div>
+                    <p class="text-gray-600">Количество:</p>
+                    <p class="font-medium">{{ quantity }}</p>
+                </div>
+                <div>
+                    <p class="text-gray-600">Статус заказа:</p>
+                    <p class="font-medium">{{ status }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-4">Сведения об ингридиентах</h2>
+            <table class="min-w-full bg-white border border-gray-200">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="py-2 px-4 border">Ингридиент</th>
+                        <th class="py-2 px-4 border">Использовано</th>
+                        <th class="py-2 px-4 border">Зарезервировано</th>
+                        <th class="py-2 px-4 border">Остаток</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in ingredients_info %}
+                    <tr class="text-center">
+                        <td class="py-2 px-4 border">{{ item.name }}</td>
+                        <td class="py-2 px-4 border">{{ item.used }}</td>
+                        <td class="py-2 px-4 border">{{ item.reserved }} </td>
+                        <td class="py-2 px-4 border">{{ item.remaining }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-between">
+            <a href="/" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                New Order
+            </a>
+            <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+                All Orders
+            </button>
+        </div>
+    </div>
+</body>
+</html>

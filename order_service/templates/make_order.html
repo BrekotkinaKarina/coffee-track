@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Order</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+    <h1 class="text-3xl font-bold mb-6">It's time for coffee</h1>
+
+    <div class="flex flex-col space-y-6 w-full max-w-md">
+        <form action="/make_order" method="post" class="bg-white p-6 rounded-lg shadow-md">
+            <!-- Поле имени -->
+            <div class="mb-4">
+                <label for="customer_name" class="block text-gray-700">Your name</label>
+                <input type="text" id="customer_name" name="customer_name" required
+                       class="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- Выбор типа кофе -->
+            <div class="mb-4">
+                <label for="coffee_type" class="block text-gray-700">Coffee type</label>
+                <select id="coffee_type" name="coffee_type" required
+                        class="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Select coffee</option>
+                    <option value="latte">Latte</option>
+                    <option value="americano">Americano</option>
+                    <option value="cappuccino">Cappuccino</option>
+                    <option value="espresso">Espresso</option>
+                </select>
+            </div>
+
+            <!-- Выбор размера -->
+            <div class="mb-4">
+                <label for="coffee_size" class="block text-gray-700">Size</label>
+                <select id="coffee_size" name="coffee_size" required
+                        class="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Select size</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+
+            <!-- Количество -->
+            <div class="mb-4">
+                <label for="quantity" class="block text-gray-700">Quantity</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required
+                       class="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- Кнопка отправки -->
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+                Place Order
+            </button>
+        </form>
+    </div>
+</body>
+</html>
